@@ -50,7 +50,7 @@ In order to populate the database, a Python script was necessary. I used librari
 
 ## Adding the Exempt Organization Business Master Files (EO BMF)
 
-![alt text](https://github.com/arsalariane/Tax-Data-Project---IRS-990-Database/EOBMF.png)
+![alt text](EOBMF.png)
 
 First, the necessary packages for this program, Requests, IO, SQLite3, and Pandas, were imported. Requests were used to request master files from the IRS website. The IO library was there for test printing and to announce tasks being executed successfully. The SQLite3 library was necessary to create an SQLite database, and Pandas was used to parse the data and for data visualization.
 
