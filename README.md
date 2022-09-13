@@ -76,7 +76,7 @@ First, the necessary packages for this program, Requests, IO, SQLite3, and Panda
 Next, master files were downloaded and imported to the database. There are two types of master files available on IRS: the master files separated into 4 regions and the master files separated by state. They would be called Region Files and State Files, respectively. Both types were downloaded and imported to the database due to discrepancies between totals for the types.
 
 
-# Key challenges with dealing with these data from TYs 2012-2021 containing the 3 forms: standard 990 forms, 990-EZ forms and 990-PF forms.
+# Key challenges with dealing with these data from TYs 2012-2021 containing the 3 forms
 Handling with:
 - variability between data tags across the annually changing tax forms.
 - Changes to the regulations set by the federal government and the IRS are reflected in changes to each year’s tax form. these changes can be even more stark when comparing the XML versions of the tax forms across the years of study. Specifically, a massive transition of data tag names occurred between TY 2012 and TY 2013.
