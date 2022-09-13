@@ -2,9 +2,27 @@
 
 The Internal Revenue Service (IRS) provides a plethora of data related to tax-exempt organizations through the publication of IRS Form 990 tax filings in XLSX format. These data sources possess filing data beginning in tax year 2012 and ending in the most recently filed and uploaded tax year of 2021. The objective is to create a database from these data and identify trends and visualize them.
 
-# Objective
+# Business problem to solve
 
-Identify trends in the financial data of tourisms offices to gain a better understanding of the financial dealings of tourisms offices across the country
+Ww wants to dentify trends in the financial data to gain a better understanding of which organizations across the country is losing money. As a non-profit organization we do not expect to lose money !
+So let's see who are the "outliers" who appear to be failing in different metrics.
+
+We will look at these --metrics--:
+EIN
+NTEE_CD
+NAME
+INCOME_AMT
+STATE
+totexpens = total expenses
+totnetliabastend = total liabilities + net assets
+capitalstktrstend = Capital stock or trust principal 
+paidinsurplusend = Paid-in or capital surplus 
+initiationfee = Initiation fees and capital contributions
+totrevenue = Total revenue
+invstmntinc = investment income 
+netincfndrsng = Fundraising income
+royaltsexpns = royalties
+
 
 
 # Dataset
