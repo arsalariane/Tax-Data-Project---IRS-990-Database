@@ -1,0 +1,2 @@
+# Tax-Data-Project---IRS-990-Database
+The Internal Revenue Service (IRS) provides a plethora of data related to tax-exempt organizations through the publication of IRS Form 990 tax filings in XLSX format. These data sources possess filing data beginning in tax year 2012 and ending in the most recently filed and uploaded tax year of 2022. The objective is to create a database from these data and identify trends and visualize them.
