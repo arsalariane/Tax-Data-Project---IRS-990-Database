@@ -8,7 +8,7 @@ Identify trends in the financial data of tourisms offices to gain a better under
 
 
 # Dataset
-## The data source contains three different filing formats: standard Form 990, Form 990-EZ, and Form 990-PF:
+## The data source contains three different filing formats: standard Form 990, Form 990-EZ, and Form 990-PF
 Form 990 is the standard filing form for tax exempt organizations
 Form 990-PF is the 990 form filed by private foundations
 Form 990-EZ is filed by tax exempt organizations with gross receipts of less than $200,000 and total assets of less than $500,000 in a given tax year.
@@ -50,8 +50,7 @@ In order to populate the database, a Python script was necessary. I used librari
 
 ## Adding the Exempt Organization Business Master Files (EO BMF)
 
-![alt text](https://github.com/[arsalariane]/[Tax-Data-Project---IRS-990-Database
-]/EOBMF.png)
+![alt text](https://github.com/arsalariane/Tax-Data-Project---IRS-990-Database/EOBMF.png)
 
 First, the necessary packages for this program, Requests, IO, SQLite3, and Pandas, were imported. Requests were used to request master files from the IRS website. The IO library was there for test printing and to announce tasks being executed successfully. The SQLite3 library was necessary to create an SQLite database, and Pandas was used to parse the data and for data visualization.
 
