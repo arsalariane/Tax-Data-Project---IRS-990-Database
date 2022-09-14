@@ -18,21 +18,20 @@ Each record in the tables is therefore uniquely defined by a year, EO caracteris
 We wants to dentify trends in the financial data to gain a better understanding of which organizations across the country is losing money. As a non-profit organization we do not expect to lose money ! And it would be interesting to understand why these EO are losing money: do they spent to much money (for which purpose), what are their sources of income ?
 So let's see who are the "outliers" who appear to be failing in different metrics.
 
-We will look at the following  --metrics--:
-EIN
-NTEE_CD
-NAME
-INCOME_AMT
-STATE
-totexpens = total expenses
-totnetliabastend = total liabilities + net assets
-capitalstktrstend = Capital stock or trust principal 
-paidinsurplusend = Paid-in or capital surplus 
-initiationfee = Initiation fees and capital contributions
-totrevenue = Total revenue
-invstmntinc = investment income 
-netincfndrsng = Fundraising income
-royaltsexpns = royalties
+We will look at the following  --metrics-- (see files "nomenclature%" in main repo for additional information):
+- EIN
+- NTEE_CD
+- NAME
+- INCOME_AMT
+- STATE
+- totexpns = total expenses
+- totnetliabastend = total liabilities + net assets
+- paidinsurplusend = Paid-in or capital surplus 
+- initiationfee = Initiation fees and capital contributions
+- totrevenue = Total revenue
+- invstmntinc = investment income 
+- netincfndrsng = Fundraising income
+- royaltsexpns = royalties
 
 
 ## Datased used
@@ -79,9 +78,14 @@ Next, master files were downloaded and imported to the database. There are two t
 # Key challenges with dealing with these data from TYs 2012-2021 containing the 3 forms
 Handling with:
 - variability between data tags across the annually changing tax forms.
-- Changes to the regulations set by the federal government and the IRS are reflected in changes to each year’s tax form. these changes can be even more stark when comparing the XML versions of the tax forms across the years of study. Specifically, a massive transition of data tag names occurred between TY 2012 and TY 2013.
+- Changes to the regulations set by the federal government and the IRS are reflected in changes to each year’s tax form. these changes can be even more stark when comparing the XLSX versions of the tax forms across the years of study. Specifically, a massive transition of data tag names occurred between TY 2012 and TY 2013.
 
 Solution: In order to create a robust and evolving databases, the variable data tags across the years of study need to be aligned into a unified schema to the greatest extent possible. This involved analyzing the tags that appear in given years, and leveraging set theory to assess intersections and differences between those tags. 
 
 # Perspectives
 - Build a ML model to help EO in predicting their financial outcome: it could be implementing a regression model brcause we have data ranging TYs 2012-2021. Thus we can predict for example financial loss/gain in the folowwing year and depending of the result, the EO would change its strategy: e.g. in the case the EO has an imbalanced financial result (he lose more money than he makes money), the model couls predic which metric is more impactful. For example, is because he has too much emmployees he is losing money or ist it because he is receiving less fundraisings?
+- we can also apply a K-Means clustering model to determine whether these EO are financially efficient, which one are inefficient and are failing at one of the metrics, either their liabilities to assets ratio is too high or their program expenses ratio, working captial ratio or surplus margin is too low.
+We could follow these steps: Initialize cluster centers, by assigning points to each cluster and repeating this process trying to minimize Euclidean distance from points to cluster centers with each iteration.
+Outliers could be calculated as being the point that was the furthest Euclidean distance away from its cluster center
+- MongoDB has the capability to handle data in a schema-independent manner, which would be incredibly useful for adding new years’ data to this project’s database
+- PostgreSQL databases have a few different features that would add value to a 990 filings database. One such advantage is the capability of georeferencing database entries (based on address data present in Form 990) such that analyses can be performed in a geospatial manner
