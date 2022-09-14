@@ -18,7 +18,7 @@ Each record in the tables is therefore uniquely defined by a year, EO caracteris
 We wants to dentify trends in the financial data to gain a better understanding of which organizations across the country is losing money. As a non-profit organization we do not expect to lose money ! And it would be interesting to understand why these EO are losing money: do they spent to much money (for which purpose), what are their sources of income ?
 So let's see who are the "outliers" who appear to be failing in different metrics.
 
-We will look at the following  --metrics-- (see files "nomenclature%" in main repo for additional information):
+We will look at the following  **metrics** (see files "nomenclature%" in main repo for additional information):
 - EIN
 - NTEE_CD
 - NAME
@@ -35,7 +35,7 @@ We will look at the following  --metrics-- (see files "nomenclature%" in main re
 
 
 ## Datased used
-To simplify the analyze, the data used in this project was from the website, for the year 2021, containing only the 990-EZ forms + the EO BMF.
+To simplify the analyze, the data used in this project was from the website, for the year 2021, containing only the 990-EZ forms + the EO BMF (See Jypupiter Notebook in the main repo).
 
 
 # Preprocessing steps
@@ -49,22 +49,21 @@ To simplify the analyze, the data used in this project was from the website, for
 - The 990 filing data used for this project was sourced from IRS website containing 990 tax filing data in XLSX format, which contained data from TY 2021 for the 990-EZ forms.
 - Beyond the XLSX data, there was one other key resources that needed to be extracted for this project. The other resource is the Exempt Organization Business Master File (EO BMF). The file contains information about the different groupings, overall financial data such as total asset amount and revenue amount, and locality for each organization, but does not contain actual 990 tax filing data for an organization. This file is updated each year with information on all of the tax-exempt organizations that filed a 990 form for a given tax year. 
 
-In the context of this project, the file is used for the different grouping information under the fields Activity Code and National Taxonomy of Exempt Organization (NTEE) Code. Activity Code is a 9-digit code composed of three 3-digit numbers that correspond to different business activities. NTEE Code is a letter prefix, which relates to overall type of organization, and 2-digit number, which relates to a specific scope of organization within a type. With the activity and NTEE codes the Employer Identification Number (EIN) could be identified for every tourism office. 
+In the context of this project, the file is used for the different grouping information under the fields Activity Code and National Taxonomy of Exempt Organization (NTEE) Code. Activity Code is a 9-digit code composed of three 3-digit numbers that correspond to different business activities. NTEE Code is a letter prefix, which relates to overall type of organization, and 2-digit number, which relates to a specific scope of organization within a type. With the activity and NTEE codes the Employer Identification Number (EIN) could be identified for every office. 
 
 # Database Creation
 
 - The database contains tax information from all EOs (exempt organizations) and the IRS master files (EO BMFs)
-The IRS website contained two different types of master files: one grouped by regions and another grouped by states 
+The IRS website contained two different types of master files: one grouped by regions and another grouped by states. 
 A database table for these master files was created by performing a union operation on the two tables and removing the duplicate entries based on their unique EINs.
 The 990 filings database needed to be organized into various subtables for an efficient and easy to query database design.
-One such table concerns the salaries and information regarding officers working for various EOs. As the organizations have varying numbers of officers, we need to organize this information into a separate table, labeled “Officers”.
- These separate tables will be tied to the primary 990 filing data (990-EZ table) through the unique EIN possessed by each organization
+These separate tables will be tied to the primary 990 filing data (990-EZ table) through the unique EIN possessed by each organization
  
  - 5 tables : eo_regions, eo_states, eo_combined, tax_990ez.
 
 # Database population
 
-In order to populate the database, a Python script was necessary. I used libraries like Pandas and SQLite3 to create and populate the database. I used Pandas for parsing files and inserting the data into the tables. Pandas has many functions to parse various file formats like Excel Workbook, CSV, and JSON. Pandas also supports many different database tools, making it flexible in case the client wants to change to a different database structure in the future. Overall, Pandas and SQLite3 were optimal choices for the initial iteration of this database because they were easy to use and understand. Additionally, these libraries provided built-in tools for quickly visualizing trends in the data, such as MatPlotLib’s integration in Pandas.
+In order to populate the database, a Python script was necessary. I used libraries like Pandas and SQLite3 to create and populate the database. I used Pandas for parsing files and inserting the data into the tables. Pandas has many functions to parse various file formats like Excel Workbook, CSV, and JSON. Pandas also supports many different database tools, making it flexible in case we want to change to a different database structure in the future. Overall, Pandas and SQLite3 were optimal choices for the initial iteration of this database because they were easy to use and understand. Additionally, these libraries provided built-in tools for quickly visualizing trends in the data, such as MatPlotLib’s integration in Pandas.
 
 ## Adding the Exempt Organization Business Master Files (EO BMF)
 
@@ -78,13 +77,13 @@ Next, master files were downloaded and imported to the database. There are two t
 # Key challenges with dealing with these data from TYs 2012-2021 containing the 3 forms
 Handling with:
 - variability between data tags across the annually changing tax forms.
-- Changes to the regulations set by the federal government and the IRS are reflected in changes to each year’s tax form. these changes can be even more stark when comparing the XLSX versions of the tax forms across the years of study. Specifically, a massive transition of data tag names occurred between TY 2012 and TY 2013.
+- Changes to the regulations set by the federal government and the IRS are reflected in changes to each year’s tax form. These changes can be even more stark when comparing the XLSX versions of the tax forms across the years of study. Specifically, a massive transition of data tag names occurred between TY 2012 and TY 2013.
 
 Solution: In order to create a robust and evolving databases, the variable data tags across the years of study need to be aligned into a unified schema to the greatest extent possible. This involved analyzing the tags that appear in given years, and leveraging set theory to assess intersections and differences between those tags. 
 
 # Perspectives
-- Build a ML model to help EO in predicting their financial outcome: it could be implementing a regression model brcause we have data ranging TYs 2012-2021. Thus we can predict for example financial loss/gain in the folowwing year and depending of the result, the EO would change its strategy: e.g. in the case the EO has an imbalanced financial result (he lose more money than he makes money), the model couls predic which metric is more impactful. For example, is because he has too much emmployees he is losing money or ist it because he is receiving less fundraisings?
-- we can also apply a K-Means clustering model to determine whether these EO are financially efficient, which one are inefficient and are failing at one of the metrics, either their liabilities to assets ratio is too high or their program expenses ratio, working captial ratio or surplus margin is too low.
+- Build a ML model to help EOs in predicting their financial outcome: it could be by implementing a regression model because we have time-series data, ranging TYs 2012-2021. Thus, we can predict for example financial loss/gain in the folowwing year and depending of the result, the EO would change its strategy: e.g. in the case the EO has an imbalanced financial result (he loses more money than he makes money), the model could predic which metric is more impactful. For example, is it because he has too much emmployees he is losing money or is it because he is receiving less fundraisings?
+- we can also apply a K-Means clustering model to determine whether these EOs are financially efficient, which one are inefficient and are failing at one of the metrics, is their liabilities to assets ratio too high or their program expenses ratio, working captial ratio or surplus margin is too low?
 We could follow these steps: Initialize cluster centers, by assigning points to each cluster and repeating this process trying to minimize Euclidean distance from points to cluster centers with each iteration.
 Outliers could be calculated as being the point that was the furthest Euclidean distance away from its cluster center
 - MongoDB has the capability to handle data in a schema-independent manner, which would be incredibly useful for adding new years’ data to this project’s database
