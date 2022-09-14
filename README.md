@@ -10,8 +10,8 @@ The Internal Revenue Service (IRS) provides a plethora of data related to tax-ex
 - Form 990-EZ is filed by tax exempt organizations with gross receipts of less than $200,000 and total assets of less than $500,000 in a given tax year.
 
 # Dataset granularity and categories
-Each row corresponds to the the financial, humane resources, geographic data of a specfic exempt organization (EO) over a tax period/year.
-Each record in the tables is therefore uniquely defined by a year, EO caracteristics (EO's Employer Identification Number (EIN), name, afficliation, adress, activity ...), and selected financial data from filers of three Internal Revenue Service (IRS) information returns: Form 990, 990-EZ and 990-PF
+Each row corresponds to the financial, human resources, geographic data of a specfic exempt organization (EO) over a tax period/year.
+Each record in the tables is therefore uniquely defined by a year, EO caracteristics (EO's Employer Identification Number (EIN), name, affiliation, adress, activity ...), and selected financial data from filers of three Internal Revenue Service (IRS) information returns: Form 990, 990-EZ and 990-PF.
 
 # Business problem to solve
 
