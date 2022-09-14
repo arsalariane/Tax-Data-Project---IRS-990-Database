@@ -5,9 +5,9 @@ The Internal Revenue Service (IRS) provides a plethora of data related to tax-ex
 
 # Dataset
 ## The data source contains three different filing formats
-Standard form 990 is the standard filing form for tax exempt organizations
-Form 990-PF is the 990 form filed by private foundations
-Form 990-EZ is filed by tax exempt organizations with gross receipts of less than $200,000 and total assets of less than $500,000 in a given tax year.
+- Standard form 990 is the standard filing form for tax exempt organizations
+- Form 990-PF is the 990 form filed by private foundations
+- Form 990-EZ is filed by tax exempt organizations with gross receipts of less than $200,000 and total assets of less than $500,000 in a given tax year.
 
 # Dataset granularity and categories
 Each row corresponds to the the financial, humane resources, geographic data of a specfic exempt organization (EO) over a tax period/year.
